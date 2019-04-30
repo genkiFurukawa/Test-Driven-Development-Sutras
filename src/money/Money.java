@@ -1,6 +1,6 @@
 package money;
 
-public class Money {
+public class Money implements Expression{
 
 	protected int amount;
 	protected String currency;
@@ -21,6 +21,10 @@ public class Money {
 	public boolean equals(Object object) {
 		Money money = (Money) object;
 		return this.amount == money.amount && this.currency() == money.currency();
+	}
+
+	public Expression plus(Money addend) {
+		return new Money(this.amount + addend.amount, addend.currency());
 	}
 
 	//	staticメソッドは、newを使わずに呼び出すことができる
