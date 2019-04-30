@@ -1,6 +1,6 @@
 package money;
 
-abstract public class Money {
+public class Money {
 
 	protected int amount;
 	protected String currency;
@@ -10,13 +10,17 @@ abstract public class Money {
 		this.currency = currency;
 	}
 
-	abstract Money times(int multiplier);
+	public Money times(int multiplier) {
+		return new Money(this.amount * multiplier, this.currency);
+	}
 
-	abstract String currency();
+	public String currency() {
+		return this.currency;
+	}
 
 	public boolean equals(Object object) {
 		Money money = (Money) object;
-		return this.amount == money.amount && this.getClass() == money.getClass();
+		return this.amount == money.amount && this.currency() == money.currency();
 	}
 
 	//	staticメソッドは、newを使わずに呼び出すことができる
