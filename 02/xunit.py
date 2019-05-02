@@ -26,17 +26,9 @@ class WasRun(TestCase):
         self.log = self.log + "tearDown "
 
 class TestCaseTest(TestCase):
-    def setUp(self):
-        self.test = WasRun("testMethod")
-    
     def testTemplateMethod(self):
         test = WasRun("testMethod")
         test.run()
-        assert("setUp testMethod " == self.test.log)
-    
-    def testSetUp():
-        self.test.run()
-        assert("setUp testMethod " == self.test.log)
+        assert("setUp testMethod tearDown" == self.test.log)
 
 TestCaseTest("testTemplateMethod").run()
-TestCaseTest("testSetUp").run()
