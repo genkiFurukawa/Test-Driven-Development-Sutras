@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 class TestResult:
     def __init__(self):
         self.runCount = 0
@@ -24,7 +27,7 @@ class TestCase:
         self.setUp()
         # getattr:objectの指定された属性を取得する
         method = getattr(self, self.name)
-        method
+        method()
         self.tearDown()
         return result
     
@@ -45,7 +48,7 @@ class TestCaseTest(TestCase):
     def testTemplateMethod(self):
         test = WasRun("testMethod")
         test.run()
-        assert("setUp testMethod tearDown" == self.test.log)
+        assert("setUp testMethod tearDown " == test.log)
     
     def testResult(self):
         test = WasRun("testMethod")
